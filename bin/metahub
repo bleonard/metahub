@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'commander/import'
+require 'metahub'
+
+program :name, 'metahub'
+program :version, Metahub::VERSION
+program :description, 'Do things to lots of repos.'
+ 
+command :backup do |c|
+  c.syntax = 'metahub backup'
+  c.summary = ''
+  c.description = 'Download them all'
+  c.action do |args, options|
+    Metahub::Backup.now!
+  end
+end
+
+command :repositories do |c|
+  c.syntax = 'metahub repositories'
+  c.description = 'Lists known repositories'
+  c.action do |args, options|
+    Metahub::GithubService.owner.repositories.each do |name|
+      puts name
+    end
+  end
+end
