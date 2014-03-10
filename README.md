@@ -1,29 +1,53 @@
 # Metahub
 
-TODO: Write a gem description
+Do things to all your github repositories.
 
-## Installation
+## Install
 
-Add this line to your application's Gemfile:
+    $ git clone git@github.com:bleonard/metahub.git
+    $ cd metahub
+    $ bundle install
 
-    gem 'metahub'
+## Backup
 
-And then execute:
+    $ bundle exec ./bin/metahub backup
 
-    $ bundle
+    Github Username: bleonard
+    Github Password: ***********
 
-Or install it yourself as:
+    assaf/vanity...
+    git clone git@github.com:assaf/vanity.git /Users/brian/bleonard/metahub/2014.3.10/assaf/vanity
+    Cloning into '/Users/brian/bleonard/metahub/2014.3.10/assaf/vanity'...
+    remote: Reusing existing pack: 4550, done.
+    remote: Total 4550 (delta 0), reused 0 (delta 0)
+    Receiving objects: 100% (4550/4550), 2.87 MiB | 86.00 KiB/s, done.
+    Resolving deltas: 100% (2049/2049), done.
+    Checking connectivity... done
+     ...done!
 
-    $ gem install metahub
+    bleonard/actionHero...
+    git clone git@github.com:bleonard/actionHero.git /Users/brian/bleonard/metahub/2014.3.10/bleonard/actionHero
+    Cloning into '/Users/brian/bleonard/metahub/2014.3.10/bleonard/actionHero'...
+    remote: Counting objects: 3360, done.
+    remote: Compressing objects: 100% (1868/1868), done.
 
-## Usage
+    ... lots of those
 
-TODO: Write usage instructions here
+## Repositories
 
-## Contributing
+    $ bundle exec ./bin/metahub repositories
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+    Github Username: bleonard 
+    Github Password: ***********
+
+    assaf/vanity
+    bleonard/actionHero
+    bleonard/blackbook
+    bleonard/bleonard.github.com
+    bleonard/bootstrap
+
+    ... lots of those
+
+## TODO
+
+* Probably more commands to come
