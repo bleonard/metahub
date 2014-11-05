@@ -5,6 +5,6 @@ gem 'active_support'
 gem 'i18n'
 gem 'tzinfo'
 
-gem 'octokit', '1.23.0'
+gem 'octokit'
 
 gemspec

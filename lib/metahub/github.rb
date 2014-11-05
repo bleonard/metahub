@@ -9,7 +9,24 @@ module Metahub
 
     attr_reader :client
     def initialize
-      @client = Octokit::Client.new(:login => Auth.username, :password => Auth.password, :auto_traversal => true)
+      client_options = { :login => Auth.username, 
+                  :password => Auth.password,
+                  :auto_traversal => true
+                }
+      token_options  = { :scopes => ["repo"], 
+                  :client_id => "099bb3db6bf979a92391",
+                  :client_secret => "ad2cbeac50c2d19478b1d9041b72fd7b9a3b0d26",
+                  :idempotent => true
+                }
+
+      simple = Octokit::Client.new(client_options)
+      begin
+        token = simple.create_authorization(token_options)
+        @client = Octokit::Client.new(:access_token => token[:token])
+      rescue Octokit::OneTimePasswordRequired => e
+        token = simple.create_authorization(token_options.merge(:headers => { "X-GitHub-OTP" => Auth.otp_code }))
+        @client = Octokit::Client.new(:access_token => token[:token])
+      end
       # puts @client.ratelimit_remaining
     end
 
