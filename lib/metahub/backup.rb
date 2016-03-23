@@ -24,7 +24,7 @@ module Metahub
       return @directory if @directory
       time = Time.now
       
-      @directory = File.join(File.expand_path("."), "#{time.year}.#{time.month}.#{time.day}")
+      @directory = File.join(File.expand_path("."), "backups", "#{time.year}.#{time.month}.#{time.day}")
       FileUtils.mkdir_p(@directory) unless File.exist?(@directory)
     end
     
