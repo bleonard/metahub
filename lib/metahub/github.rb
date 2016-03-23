@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 Octokit.user_agent = "Metahub : Octokit Ruby Gem #{Octokit::VERSION}"
+Octokit.auto_paginate = true
 
 module Metahub
   class GithubService
@@ -10,9 +11,7 @@ module Metahub
     attr_reader :client
     def initialize
       client_options = { :login => Auth.username, 
-                  :password => Auth.password,
-                  :auto_traversal => true
-                }
+                  :password => Auth.password }
       token_options  = { :scopes => ["repo"], 
                   :client_id => "099bb3db6bf979a92391",
                   :client_secret => "ad2cbeac50c2d19478b1d9041b72fd7b9a3b0d26",
